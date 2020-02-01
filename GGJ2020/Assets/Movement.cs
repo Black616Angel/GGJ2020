@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.Space)) //Jump
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) //Jump
         {
             MoveVertically(VerticalMovement.up);
         }
