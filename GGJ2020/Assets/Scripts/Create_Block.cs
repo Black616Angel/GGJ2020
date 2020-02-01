@@ -27,6 +27,8 @@ public class Create_Block : MonoBehaviour
             int drehung = rnd.Next(0, 4);
             GameObject o = Instantiate(prefabs_bloecke[random], parent);
 
+            o.transform.position = new Vector3(-4.5f, 5f, 0);
+
             if (drehung == 0)
             {
                 o.transform.eulerAngles = new Vector3(o.transform.eulerAngles.x,o.transform.eulerAngles.x,transform.eulerAngles.z + 90);

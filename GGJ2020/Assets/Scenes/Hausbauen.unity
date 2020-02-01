@@ -459,9 +459,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs_bloecke:
-  - {fileID: 2526709300635538333, guid: d6828287c1b06ab43a03e1147f4ec322, type: 3}
+  - {fileID: 6451284238684604140, guid: 93a6ff9b107d6b04583c6689f82c35b2, type: 3}
+  - {fileID: 2417023415524570910, guid: ca9665846adb7404dbae42e45ea47bf1, type: 3}
   - {fileID: 8461118449878764537, guid: b4fac0cecdb4d50479bfeecdae93d027, type: 3}
-  prefab_plattform: {fileID: 486988929740888277, guid: e0320e94ef9db66489a95472acba1457,
+  - {fileID: 8271360473282893386, guid: 52ebf6672a0c7a049bc586211929c088, type: 3}
+  - {fileID: 6631152187392980663, guid: fad539494052b2043ae7f7d9d44b9f66, type: 3}
+  - {fileID: 5160104840170332631, guid: a8d77992595c32547b41c55c433a1185, type: 3}
+  - {fileID: 1475755122454391194, guid: d6828287c1b06ab43a03e1147f4ec322, type: 3}
+  prefab_plattform: {fileID: 5376420960091718048, guid: e0320e94ef9db66489a95472acba1457,
     type: 3}
   parent: {fileID: 1038374601}
 --- !u!4 &1909529521
