@@ -96,10 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2582003ce5d71f34c9d8e574c775680a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horSpeed: 0
+  verSpeed: 0
   position: {x: 0, y: 0}
-  HVelocity: 0
-  VVelocity: 0
-  IsGrounded: 0
 --- !u!114 &2215909216524613794
 MonoBehaviour:
   m_ObjectHideFlags: 0
