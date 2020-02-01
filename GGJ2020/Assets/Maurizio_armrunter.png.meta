@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ff169c2c79cf8d647a77c3f470e9b980
+=======
+guid: ded3787a6546f0d4ebe81b9280fbd871
+>>>>>>> Hausfertigbauenv2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
