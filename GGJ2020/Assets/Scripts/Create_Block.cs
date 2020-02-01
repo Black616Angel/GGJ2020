@@ -28,12 +28,9 @@ public class Create_Block : MonoBehaviour
 
             GameObject k = Instantiate(prefab_plattform, o.transform);
 
-
-            Debug.Log(k.gameObject.transform.localPosition.z);
+            
             k.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.25f,0.25f), UnityEngine.Random.Range(-0.25f, 0.25f), k.transform.localPosition.z);
-
-
-            Debug.Log(k.gameObject.transform.localPosition.z);
+            
 
             created.Add(o);
             created[created.Count-1].AddComponent<blockcheck>();

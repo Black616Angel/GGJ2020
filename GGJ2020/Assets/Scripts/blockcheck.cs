@@ -16,9 +16,9 @@ public class blockcheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (gameObject.transform.position.y < -10f)
         {
-            Debug.Log("!");
+            Destroy(gameObject);
         }
     }
 }
