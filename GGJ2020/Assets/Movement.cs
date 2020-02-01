@@ -125,7 +125,9 @@ public class Movement : MonoBehaviour
                 break;
             case VerticalMovement.up:
                 if(IsGrounded)
+                {
                     VVelocity = verSpeed;
+                }
                 IsGrounded = false;
                 break;
             case VerticalMovement.stop:
@@ -138,6 +140,16 @@ public class Movement : MonoBehaviour
         }
 
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y + VVelocity, -1000, verSpeed));
+        if(rb.velocity.y < 0)
+            foreach (Collider2D coll in gameObject.GetComponents<Collider2D>())
+            {
+                coll.enabled = true;
+            }
+        else if (rb.velocity.y > 0)
+            foreach (Collider2D coll in gameObject.GetComponents<Collider2D>())
+            {
+                coll.enabled = false;
+            }
     }
 
     void OnCollisionStay2D(Collision2D collisionInfo)
