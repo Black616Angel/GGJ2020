@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     RaycastHit2D hit;
     public float distance=2f;
     public Transform holdpoint;
+    public float throwForce;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class PickUp : MonoBehaviour
 
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.B))
+      if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (!isHolding)
             {
@@ -25,17 +26,23 @@ public class PickUp : MonoBehaviour
                 Physics2D.queriesStartInColliders = false;
 
                 hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x,distance);
-                Debug.Log(hit.collider);
+                
                 if(hit.collider!=null)
                 {
                     isHolding = true;
-                    Debug.Log(isHolding);
+                    
                     
                 }
 
             }else
             {
                 //throw
+                isHolding = false;
+                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,1) * throwForce;
+                    hit.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                }
             }
 
 
@@ -49,10 +56,11 @@ public class PickUp : MonoBehaviour
     }
 
 
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position+Vector3.right*transform.localScale.x * distance);
     }
+    
 }

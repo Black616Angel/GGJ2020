@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Vector2 position = new Vector2(0f, 0f);
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     public float HVelocity;
     public float VVelocity;
 
@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
 
