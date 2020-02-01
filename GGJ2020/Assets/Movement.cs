@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public float horSpeed;
     public float verSpeed;
 
-    Vector2 position = new Vector2(0f, 0f);
+    public Vector2 position = new Vector2(0f, 0f);
     private Rigidbody2D rb;
     float HVelocity;
     float VVelocity;
@@ -109,10 +109,10 @@ public class Movement : MonoBehaviour
         if (directionChange)
         {
             transform.localScale = new Vector3(-1 * (float)facing / 2, transform.localScale.y,transform.localScale.z);
-            Debug.Log("direction");
+            //Debug.Log("direction");
         }
 
-        Debug.Log("facing: " + facing + " velocity: " + rb.velocity.x + " localScale: " + transform.localScale.x);
+        //Debug.Log("facing: " + facing + " velocity: " + rb.velocity.x + " localScale: " + transform.localScale.x);
 
     }
 
