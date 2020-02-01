@@ -1,0 +1,10 @@
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\obj\Debug\GameServer.csprojAssemblyReference.cache
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\bin\Debug\GameServer.exe.config
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\bin\Debug\GameServer.exe
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\bin\Debug\GameServer.pdb
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\obj\Debug\GameServer.csproj.CopyComplete
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\obj\Debug\GameServer.exe
+C:\Users\Elias\Documents\GIT\GGJ2020\GameServer\GameServer\GameServer\obj\Debug\GameServer.pdb
