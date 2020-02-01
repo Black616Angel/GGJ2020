@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class blockcheck : MonoBehaviour
+public class blockcheck : NetworkBehaviour
 {
     public float boden_pos;
 

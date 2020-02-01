@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
 
     public float horSpeed;
@@ -30,41 +31,44 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        position.x = (float)(Math.Round(transform.position.x * 2f, MidpointRounding.AwayFromZero)) / 2f;
-        position.y = (float)(Math.Round(transform.position.y * 2f, MidpointRounding.AwayFromZero)) / 2f;
+        if (this.isLocalPlayer)
+        {
+            position.x = (float)(Math.Round(transform.position.x * 2f, MidpointRounding.AwayFromZero)) / 2f;
+            position.y = (float)(Math.Round(transform.position.y * 2f, MidpointRounding.AwayFromZero)) / 2f;
 
-        if (Input.GetKey(KeyCode.A)) //Links
-        {
-            MoveHorizontally(HorizontalMovement.left);
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.D))// Rechts
+            if (Input.GetKey(KeyCode.A)) //Links
             {
-                MoveHorizontally(HorizontalMovement.right);
+                MoveHorizontally(HorizontalMovement.left);
             }
-            else // keine horizontale Bewegung
+            else
             {
-                MoveHorizontally(HorizontalMovement.stop);
+                if (Input.GetKey(KeyCode.D))// Rechts
+                {
+                    MoveHorizontally(HorizontalMovement.right);
+                }
+                else // keine horizontale Bewegung
+                {
+                    MoveHorizontally(HorizontalMovement.stop);
+                }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) //Jump
-        {
-            MoveVertically(VerticalMovement.up);
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.S))// Down
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) //Jump
             {
-                MoveVertically(VerticalMovement.down);
+                MoveVertically(VerticalMovement.up);
             }
-            else // keine horizontale Bewegung
+            else
             {
-                MoveVertically(VerticalMovement.stop);
+                if (Input.GetKeyDown(KeyCode.S))// Down
+                {
+                    MoveVertically(VerticalMovement.down);
+                }
+                else // keine horizontale Bewegung
+                {
+                    MoveVertically(VerticalMovement.stop);
+                }
             }
-        }
 
+        }
     }
 
     private void MoveHorizontally(HorizontalMovement direction)
