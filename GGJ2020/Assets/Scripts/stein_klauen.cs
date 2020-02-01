@@ -38,14 +38,12 @@ public class stein_klauen : MonoBehaviour
             //Vektor normieren
             richtungsVektor = richtungsVektor * (1 / richtungsVektor.magnitude);
 
-            Debug.Log("andocken");
             transform.position += (Vector3) (richtungsVektor) * (geschwindigkeit * Time.deltaTime);
         }
 
         //Block tragen
         if ((((Vector2)(transform.position - zielBlock.transform.position)).magnitude <= 0.5) || (hat_block == true))
         {
-            Debug.Log("habe block");
             posGetragenerBlock = transform.position;
             posGetragenerBlock.z = 0;
             zielBlock.transform.position = posGetragenerBlock;
@@ -55,6 +53,7 @@ public class stein_klauen : MonoBehaviour
             hat_block = true;
         }
 
+        // Weg fliegen
         if (hat_block)
         {
             //Richtungsvektor zu Abflug Ziel bilden
@@ -63,9 +62,16 @@ public class stein_klauen : MonoBehaviour
             //Vektor normieren
             richtungsVektor = richtungsVektor * (1 / richtungsVektor.magnitude);
 
-            Debug.Log("abflug");
             transform.position += (Vector3)(richtungsVektor) * (geschwindigkeit * Time.deltaTime);
             //transform.position = new Vector3(0, 0, 0);
+        }
+
+        //Block und Selbst Löschen, wenn Abflug Ziel erreicht
+
+        if ((((Vector2) transform.position - abflugZiel).magnitude <= 0.5) && (hat_block == true))
+        {
+            Destroy(zielBlock);
+            Destroy(gameObject);
         }
     }
 }
