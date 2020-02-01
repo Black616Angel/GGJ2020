@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Block
   - Boden
+  - Getragener_Block
   layers:
   - Default
   - TransparentFX

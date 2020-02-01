@@ -12,6 +12,8 @@ public class Angriffe : MonoBehaviour
     public float Geschwindigeit_Wind;
     public float sekWindZerstören;
     public GameObject windstoss_prefab;
+    public Vector3 Anfangspos_Typ2;
+    public GameObject vieh_prefab;
 
     void Update()
     {
@@ -30,6 +32,11 @@ public class Angriffe : MonoBehaviour
             this.Angriff_Erdbeben();
         }
 
+        if (Input.GetKeyDown("v"))
+        {
+            this.Angriff_Typ2();
+        }
+
     }
 
     void Angriff_Typ1()
@@ -46,6 +53,12 @@ public class Angriffe : MonoBehaviour
 
         //Feind fliegt weg und wird zerstört
         StartCoroutine(zerstöre_nach_zeit(5, feind));
+    }
+
+    void Angriff_Typ2()
+    {
+        // Feind erschaffen
+        GameObject feind = Instantiate(vieh_prefab, Anfangspos_Typ2, Quaternion.identity);
     }
 
     void Angriff_Wind()
