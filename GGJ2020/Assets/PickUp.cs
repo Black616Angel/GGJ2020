@@ -54,12 +54,22 @@ public class PickUp : MonoBehaviour
         {
             if(hitObj is null)
             {
-                hitObj = hit.transform.parent.gameObject; // wir wollen das GameObject drüber
+                hitObj = hit.transform.gameObject; // wir wollen das GameObject drüber
                 hitObj.GetComponent<Rigidbody2D>().freezeRotation = true;
+                hitObj.transform.rotation = new Quaternion(0,0,0,0);
+
             }
             hitObj.transform.position = new Vector3(holdpoint.position.x, holdpoint.position.y, hitObj.transform.position.z);
 
             FindNextSpot();
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                hitObj.transform.Rotate(new Vector3(0, 0, 90));
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                hitObj.transform.Rotate(new Vector3(0, 0, -90));
+            }
         }
 
     }

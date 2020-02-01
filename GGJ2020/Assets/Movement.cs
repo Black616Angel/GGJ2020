@@ -126,16 +126,18 @@ public class Movement : MonoBehaviour
             case VerticalMovement.up:
                 if(IsGrounded)
                     VVelocity = verSpeed;
+                IsGrounded = false;
                 break;
             case VerticalMovement.stop:
                 if (IsGrounded)
                     VVelocity = 0f;
                 else
                     VVelocity = -0.2f;
+                IsGrounded = false;
                 break;
         }
 
-        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + VVelocity);
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y + VVelocity, -1000, verSpeed));
     }
 
     void OnCollisionStay2D(Collision2D collisionInfo)
