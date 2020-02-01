@@ -149,18 +149,18 @@ public class Movement : MonoBehaviour
     {
         IsGrounded = false;
     }
+}
 
-    enum HorizontalMovement
-    {
-        right,
-        left,
-        stop
-    }
+public enum HorizontalMovement
+{
+    right,
+    left,
+    stop
+}
 
-    enum VerticalMovement
-    {
-        up,
-        down,
-        stop
-    }
+public enum VerticalMovement
+{
+    up,
+    down,
+    stop
 }
