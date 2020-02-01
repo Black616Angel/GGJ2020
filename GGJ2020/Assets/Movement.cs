@@ -60,6 +60,10 @@ public class Movement : MonoBehaviour
 
     private void MoveHorizontally(HorizontalMovement direction)
     {
+
+        int facing = 0;
+        bool directionChange = false;
+
         switch (direction)
         {
             case HorizontalMovement.left:
@@ -78,7 +82,29 @@ public class Movement : MonoBehaviour
                 break;
         }
 
+
+        if (rb.velocity.x < 0)
+            facing = -1;
+        else if (rb.velocity.x > 0)
+            facing = 1;
+        else
+            facing = (int)(2 * transform.localScale.x);
+
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + HVelocity, -1f, 1f), rb.velocity.y);
+
+        if (rb.velocity.x < 0 && facing == 1)
+            directionChange = true;
+        else if (rb.velocity.x > 0 && facing == -1)
+            directionChange = true;
+
+        if (directionChange)
+        {
+            transform.localScale = new Vector3(-1 * (float)facing / 2, transform.localScale.y,transform.localScale.z);
+            Debug.Log("direction");
+        }
+
+        Debug.Log("facing: " + facing + " velocity: " + rb.velocity.x + " localScale: " + transform.localScale.x);
+
     }
 
     private void MoveVertically(VerticalMovement direction)
