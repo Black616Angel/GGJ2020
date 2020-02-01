@@ -133,7 +133,7 @@ public class Movement : MonoBehaviour
                     VVelocity = 0f;
                 else
                     VVelocity = -0.2f;
-                IsGrounded = false;
+                //IsGrounded = false;
                 break;
         }
 
