@@ -37,6 +37,15 @@ public class PickUp : MonoBehaviour
                     }
                 }
 
+                if(isHolding)
+                {
+                    foreach (Collider2D coll in hit.collider.gameObject.GetComponents<Collider2D>())
+                    {
+                        coll.enabled = false;
+                    }
+                }
+
+
             }else
             {
                 //throw
@@ -46,6 +55,10 @@ public class PickUp : MonoBehaviour
                     hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,1) * throwForce;
                     hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                     hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
+                    foreach (Collider2D coll in hitObj.GetComponentsInChildren<Collider2D>())
+                    {
+                        coll.enabled = true;
+                    }
                     hitObj = null;
                 }
             }
