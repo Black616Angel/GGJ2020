@@ -21,7 +21,7 @@ public class Create_Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             int random = rnd.Next(0, prefabs_bloecke.Count);
             GameObject o = Instantiate(prefabs_bloecke[random], parent);
@@ -42,12 +42,12 @@ public class Create_Block : MonoBehaviour
 
         
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            foreach (GameObject l in created)
-            {
-                Destroy(l);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    foreach (GameObject l in created)
+        //    {
+        //        //Destroy(l);
+        //    }
+        //}
     }
 }

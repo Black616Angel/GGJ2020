@@ -5,17 +5,26 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public Vector2 position = new Vector2(0f, 0f);
-    private Rigidbody2D rb;
-    public float HVelocity;
-    public float VVelocity;
 
-    public bool IsGrounded;
+    public float horSpeed;
+    public float verSpeed;
+
+    Vector2 position = new Vector2(0f, 0f);
+    private Rigidbody2D rb;
+    float HVelocity;
+    float VVelocity;
+
+    bool IsGrounded;
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+
+        if (horSpeed == 0)
+            horSpeed = 1;
+        if (verSpeed == 0)
+            verSpeed = 5;
     }
 
     // Update is called once per frame
@@ -67,10 +76,10 @@ public class Movement : MonoBehaviour
         switch (direction)
         {
             case HorizontalMovement.left:
-                HVelocity = -0.5f;
+                HVelocity = -1 * horSpeed;
                 break;
             case HorizontalMovement.right:
-                HVelocity = 0.5f;
+                HVelocity = horSpeed;
                 break;
             case HorizontalMovement.stop:
                 if (rb.velocity.x <= -0.2f)
@@ -90,7 +99,7 @@ public class Movement : MonoBehaviour
         else
             facing = (int)(2 * transform.localScale.x);
 
-        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + HVelocity, -1f, 1f), rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + HVelocity, -2 * horSpeed, 2 * horSpeed), rb.velocity.y);
 
         if (rb.velocity.x < 0 && facing == 1)
             directionChange = true;
@@ -112,11 +121,11 @@ public class Movement : MonoBehaviour
         switch (direction)
         {
             case VerticalMovement.down:
-                VVelocity = -0.5f;
+                VVelocity = -1 * verSpeed / 10;
                 break;
             case VerticalMovement.up:
                 if(IsGrounded)
-                    VVelocity = 5f;
+                    VVelocity = verSpeed;
                 break;
             case VerticalMovement.stop:
                 if (IsGrounded)
