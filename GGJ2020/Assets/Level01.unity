@@ -670,10 +670,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d0ae6990b12e54baa7fd35a1986ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Geschwindigeit_Typ1: 700
   Anfangspos_Typ1: {x: -10, y: 3.4, z: -1}
-  "st\xE4rkeWindsto\xDF": 100
+  Geschwindigeit_Typ1: 700
   feind1_prefab: {fileID: 1271743067004753887, guid: 98f5b4797c35e814aa55567bc2e27c9b,
+    type: 3}
+  Anfangspos_Wind: {x: -13, y: 1.5, z: 0}
+  "st\xE4rkeWindsto\xDF": 200
+  Geschwindigeit_Wind: 300
+  "sekWindZerst\xF6ren": 10
+  windstoss_prefab: {fileID: 884742178203389355, guid: 5e1f0d71dc87c534590b8dabcc962d15,
     type: 3}
 --- !u!4 &1251581715
 Transform:
@@ -830,9 +835,10 @@ GameObject:
   - component: {fileID: 1854928252}
   - component: {fileID: 1854928251}
   - component: {fileID: 1854928250}
+  - component: {fileID: 1854928253}
   m_Layer: 0
   m_Name: Boden
-  m_TagString: Untagged
+  m_TagString: Boden
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,6 +933,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1854928253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854928249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8cfa24467165746b36d31c20e21938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  "st\xE4rke": 6
+  dauer: 3
+  maxEntfernungZuStart: 0.1
 --- !u!1 &1944034735
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Angriffe : MonoBehaviour
 {
-    public float Geschwindigeit_Typ1;
     public Vector3 Anfangspos_Typ1;
-    public float stärkeWindstoß;
+    public float Geschwindigeit_Typ1;
     public GameObject feind1_prefab;
-    
+    public Vector3 Anfangspos_Wind;
+    public float stärkeWindstoß;
+    public float Geschwindigeit_Wind;
+    public float sekWindZerstören;
+    public GameObject windstoss_prefab;
+
     void Update()
     {
         if (Input.GetKeyDown("a"))
@@ -19,6 +23,11 @@ public class Angriffe : MonoBehaviour
         if (Input.GetKeyDown("w"))
         {
             this.Angriff_Wind();
+        }
+
+        if (Input.GetKeyDown("e"))
+        {
+            this.Angriff_Erdbeben();
         }
 
     }
@@ -33,28 +42,51 @@ public class Angriffe : MonoBehaviour
         feind.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(new Vector2(Geschwindigeit_Typ1, 0));
 
         // Feind greift an
-        this.Warte(1000);
         feind.transform.GetChild(0).GetComponent<Rigidbody2D>().gravityScale = 1;
 
-        //Feind fliegt weg
+        //Feind fliegt weg und wird zerstört
+        StartCoroutine(zerstöre_nach_zeit(5, feind));
     }
 
     void Angriff_Wind()
     {
-        GameObject[] blöcke = GameObject.FindGameObjectsWithTag("Block");
 
+        GameObject[] blöcke = GameObject.FindGameObjectsWithTag("Block");
+        GameObject wind_bild = Instantiate(windstoss_prefab, Anfangspos_Wind, Quaternion.identity);
+        wind_bild.GetComponent<Rigidbody2D>().AddForce(new Vector2(Geschwindigeit_Wind, 0));
+        
         foreach (GameObject block in blöcke)
         {
-            if (Random.value < 0.2)
+            if (Random.value < 0.4)
             {
                 Debug.Log("Wind");
                 block.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.value* stärkeWindstoß, Random.value* stärkeWindstoß));
             }
         }
+        
+
+        //Nach x Sekunden zerstören
+        StartCoroutine(zerstöre_nach_zeit(sekWindZerstören, wind_bild));
     }
 
-    IEnumerator Warte(int sekunden)
+    void Angriff_Erdbeben()
     {
-        yield return new WaitForSeconds(sekunden);
+        GameObject[] bodenelemente = GameObject.FindGameObjectsWithTag("Boden");
+
+        foreach (GameObject bodenelement in bodenelemente)
+        {
+            bodenelement.GetComponent<erdbeben>().start = true;
+        }
     }
+
+
+    IEnumerator zerstöre_nach_zeit(float sekunden, GameObject obj)
+    {
+        Debug.Log(Time.time);
+        yield return new WaitForSeconds(sekunden);
+        Debug.Log(Time.time);
+
+        Destroy(obj);
+    }
+    
 }
