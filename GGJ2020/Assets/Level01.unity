@@ -670,8 +670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d0ae6990b12e54baa7fd35a1986ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Geschwindigeit_Typ1: 40000
+  Geschwindigeit_Typ1: 700
   Anfangspos_Typ1: {x: -10, y: 3.4, z: -1}
+  "st\xE4rkeWindsto\xDF": 100
   feind1_prefab: {fileID: 1271743067004753887, guid: 98f5b4797c35e814aa55567bc2e27c9b,
     type: 3}
 --- !u!4 &1251581715
