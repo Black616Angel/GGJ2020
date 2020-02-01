@@ -418,7 +418,77 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &555866025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555866028}
+  - component: {fileID: 555866027}
+  - component: {fileID: 555866026}
+  m_Layer: 0
+  m_Name: AngriffController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555866026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555866025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e236685f6a40fb4e82021aac7ab02b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reset_button: 114
+--- !u!114 &555866027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555866025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d0ae6990b12e54baa7fd35a1986ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anfangspos_Typ1: {x: -11.14, y: 3.4, z: -1}
+  Geschwindigeit_Typ1: 700
+  feind1_prefab: {fileID: 1271743067004753887, guid: 98f5b4797c35e814aa55567bc2e27c9b,
+    type: 3}
+  Anfangspos_Wind: {x: -13, y: 1.5, z: 0}
+  "st\xE4rkeWindsto\xDF": 200
+  Geschwindigeit_Wind: 300
+  "sekWindZerst\xF6ren": 10
+  windstoss_prefab: {fileID: 884742178203389355, guid: 5e1f0d71dc87c534590b8dabcc962d15,
+    type: 3}
+  Anfangspos_Typ2: {x: -11.14, y: 3.4, z: -1}
+  vieh_prefab: {fileID: 7969395397209929766, guid: 7b6df8593bb8c3d429f1fbde50363761,
+    type: 3}
+--- !u!4 &555866028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555866025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &985000425
 GameObject:
@@ -531,7 +601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1204477351 stripped
 Transform:
@@ -591,5 +661,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
