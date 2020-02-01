@@ -57,8 +57,11 @@ public class Angriffe : MonoBehaviour
 
     void Angriff_Typ2()
     {
-        // Feind erschaffen
-        GameObject feind = Instantiate(vieh_prefab, Anfangspos_Typ2, Quaternion.identity);
+        // Feind erschaffen wenn es noch Blöcke gibt
+        if (GameObject.FindGameObjectsWithTag("Block").GetLength(0) > 0)
+        {
+            GameObject feind = Instantiate(vieh_prefab, Anfangspos_Typ2, Quaternion.identity);
+        }
     }
 
     void Angriff_Wind()
