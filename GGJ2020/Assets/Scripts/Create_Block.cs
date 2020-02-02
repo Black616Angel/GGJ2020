@@ -48,7 +48,7 @@ public class Create_Block : MonoBehaviour
         int plat = rnd.Next(0, 2);
         GameObject o = Instantiate(prefabs_bloecke[random], parent);
 
-        o.transform.position = new Vector3(-11f, 9f, 0);
+        o.transform.position = new Vector3(-12f, 9f, 0);
 
         if (drehung == 0)
         {
