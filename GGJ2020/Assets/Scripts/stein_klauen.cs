@@ -48,7 +48,11 @@ public class stein_klauen : MonoBehaviour
             posGetragenerBlock.z = 0;
             zielBlock.transform.position = posGetragenerBlock;
 
-            zielBlock.GetComponent<BoxCollider2D>().enabled = false;
+            //zielBlock.GetComponent<BoxCollider2D>().enabled = false;
+            foreach (BoxCollider2D coll in zielBlock.GetComponents<Collider2D>())
+            {
+                coll.enabled = false;
+            }
 
             hat_block = true;
         }
