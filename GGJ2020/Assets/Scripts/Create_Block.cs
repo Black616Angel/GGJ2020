@@ -9,6 +9,7 @@ public class Create_Block : MonoBehaviour
     public GameObject prefab_plattform;
     public Transform parent;
     System.Random rnd = new System.Random();
+    public GameObject platt;
 
     List<GameObject> created = new List<GameObject>();
 
@@ -20,6 +21,8 @@ public class Create_Block : MonoBehaviour
     void Start()
     {
         InvokeRepeating("create_Block", 0f, 4f);
+        InvokeRepeating("invisbleBoden", 0f, 10f);
+        InvokeRepeating("solidBoden", 1f, 10f);
     }
 
     // Update is called once per frame
@@ -40,6 +43,16 @@ public class Create_Block : MonoBehaviour
         }
     }
 
+    private void invisbleBoden()
+    {
+        platt.layer = 13;
+    }
+
+    private void solidBoden()
+    {
+        platt.layer = 10;
+    }
+
     private void create_Block()
     {
 
@@ -48,7 +61,7 @@ public class Create_Block : MonoBehaviour
         int plat = rnd.Next(0, 2);
         GameObject o = Instantiate(prefabs_bloecke[random], parent);
 
-        o.transform.position = new Vector3(-12f, 9f, 0);
+        o.transform.position = new Vector3(-12f, 5f, 0);
 
         if (drehung == 0)
         {
