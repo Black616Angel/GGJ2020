@@ -30,16 +30,23 @@ public class PickUp : MonoBehaviour
                     foreach( Collider2D coll in hit.collider.gameObject.GetComponents<Collider2D>())
                     {
                         if (coll.isTrigger)
+                        {
                             isHolding = true;
+                        }
+                            
                     }
                 }
 
                 if(isHolding)
                 {
-                    foreach (Collider2D coll in hit.collider.gameObject.GetComponents<Collider2D>())
+                    for(int i = 0;i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
                     {
-                        coll.enabled = false;
+                        foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
+                        {
+                            coll.enabled = false;
+                        }
                     }
+                    
                 }
 
 
@@ -52,11 +59,14 @@ public class PickUp : MonoBehaviour
                     hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,1) * throwForce;
                     hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                     hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
-                    foreach (Collider2D coll in hitObj.GetComponentsInChildren<Collider2D>())
+                    for (int i = 0; i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
                     {
-                        coll.enabled = true;
+                        foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
+                        {
+                            coll.enabled = true;
+                        }
                     }
-                    if(gridChecker)
+                    if (gridChecker)
                     {
                         //gridChecker = null;
                         Destroy(gridChecker);
@@ -111,9 +121,12 @@ public class PickUp : MonoBehaviour
                 hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                 hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
-                foreach (Collider2D coll in hitObj.GetComponentsInChildren<Collider2D>())
+                for (int i = 0; i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
                 {
-                    coll.enabled = true;
+                    foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
+                    {
+                        coll.enabled = true;
+                    }
                 }
                 hitObj.transform.position = gridChecker.transform.position;
 

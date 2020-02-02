@@ -15,9 +15,16 @@ public class Angriffe : MonoBehaviour
     public Vector3 Anfangspos_Typ2;
     public GameObject vieh_prefab;
 
+
+    private void Start()
+    {
+        InvokeRepeating("Angriff_Typ2", 0f, 10f);
+    }
+
+
     void Update()
     {
-        if (Input.GetKeyDown("a"))
+        /*if (Input.GetKeyDown("a"))
         {
             this.Angriff_Typ1();
         }
@@ -36,7 +43,7 @@ public class Angriffe : MonoBehaviour
         {
             this.Angriff_Typ2();
         }
-
+        */
     }
 
     void Angriff_Typ1()
@@ -57,11 +64,15 @@ public class Angriffe : MonoBehaviour
 
     void Angriff_Typ2()
     {
-        // Feind erschaffen wenn es noch Blöcke gibt
-        if (GameObject.FindGameObjectsWithTag("Block").GetLength(0) > 0)
+        if (Random.Range(0, 100) < 5f)
         {
-            GameObject feind = Instantiate(vieh_prefab, Anfangspos_Typ2, Quaternion.identity);
+            if (GameObject.FindGameObjectsWithTag("Block").GetLength(0) > 0)
+            {
+                GameObject feind = Instantiate(vieh_prefab, Anfangspos_Typ2, Quaternion.identity);
+            }
         }
+        // Feind erschaffen wenn es noch Blöcke gibt
+        
     }
 
     void Angriff_Wind()
