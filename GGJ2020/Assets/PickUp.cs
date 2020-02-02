@@ -25,9 +25,14 @@ public class PickUp : MonoBehaviour
 
                 hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x,distance);
                 
-                if(hit.collider != null)
+                if (hit.collider != null)
                 {
-                    foreach( Collider2D coll in hit.collider.gameObject.GetComponents<Collider2D>())
+                    if (hit.collider.gameObject.transform.parent.tag == null)
+                    {
+                        hit.collider.gameObject.transform.parent.tag = null;
+                    }
+
+                    foreach ( Collider2D coll in hit.collider.gameObject.GetComponents<Collider2D>())
                     {
                         if (coll.isTrigger)
                         {
@@ -39,7 +44,8 @@ public class PickUp : MonoBehaviour
 
                 if(isHolding)
                 {
-                    for(int i = 0;i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
+                                        
+                    for (int i = 0;i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
                     {
                         foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
                         {
@@ -69,9 +75,9 @@ public class PickUp : MonoBehaviour
                         Destroy(gridChecker);
                         gridChecker = null;
                     }
-                    hitObj = null;
+
                     hitObj.tag = "Block";
-                    Debug.Log ("asd");
+                    hitObj = null;
                 }
             }
         }
@@ -133,8 +139,8 @@ public class PickUp : MonoBehaviour
                     gridChecker = null;
                     //Destroy(gridChecker);
                 }
-                hitObj = null;
                 hitObj.tag = "Block";
+                hitObj = null;
             }
             
         }

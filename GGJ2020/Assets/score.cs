@@ -6,12 +6,21 @@ using UnityEngine.UI;
 public class score : MonoBehaviour
 {
     public Text score_text;
-    
+
+
+    float max_y;
+
+    private void Start()
+    {
+        max_y = -3.2f;
+    }
+
+
     void Update()
     {
         GameObject[] blöcke = GameObject.FindGameObjectsWithTag("Block");
 
-        float max_y = -3.2f;
+        
 
         foreach (GameObject block in blöcke)
         {
