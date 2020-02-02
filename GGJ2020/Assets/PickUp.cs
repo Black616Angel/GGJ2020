@@ -136,6 +136,7 @@ public class PickUp : MonoBehaviour
                     gridChecker = null;
                     //Destroy(gridChecker);
                 }
+                hitObj.tag = "Block";
                 hitObj = null;
             }
         }
