@@ -68,8 +68,9 @@ public class PickUp : MonoBehaviour
                     }
                     if (gridChecker)
                     {
-                        gridChecker = null;
+                        //gridChecker = null;
                         Destroy(gridChecker);
+                        gridChecker = null;
                     }
                     hitObj = null;
                 }
@@ -94,6 +95,7 @@ public class PickUp : MonoBehaviour
                     if (!coll.isTrigger)
                         coll.enabled = false;
                 }
+                Grid_Checker_Scale();
 
             }
             FindNextSpot();
@@ -101,15 +103,22 @@ public class PickUp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 hitObj.transform.Rotate(new Vector3(0, 0, 90));
+
+                gridChecker.transform.Rotate(new Vector3(0, 0, 90));
+                Grid_Checker_Scale();
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 hitObj.transform.Rotate(new Vector3(0, 0, -90));
+
+                gridChecker.transform.Rotate(new Vector3(0, 0, -90));
+                Grid_Checker_Scale();
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 isHolding = false;
-                hitObj.transform.position = gridChecker.transform.position;
+                //hitObj.transform.position = gridChecker.transform.position;
+                hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                 hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
                 for (int i = 0; i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
@@ -119,10 +128,13 @@ public class PickUp : MonoBehaviour
                         coll.enabled = true;
                     }
                 }
+                hitObj.transform.position = gridChecker.transform.position;
+
                 if (gridChecker)
                 {
-                    gridChecker = null;
                     Destroy(gridChecker);
+                    gridChecker = null;
+                    //Destroy(gridChecker);
                 }
                 hitObj = null;
             }
@@ -136,6 +148,7 @@ public class PickUp : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position+Vector3.right*transform.localScale.x * distance);
     }
 
+    /*
     private void FindNextSpot()
     {
         gridChecker.transform.position = new Vector3(
@@ -144,6 +157,60 @@ public class PickUp : MonoBehaviour
         (float)(Math.Round(transform.position.z * 2f, MidpointRounding.AwayFromZero)) / 2f
             );
         gridChecker.transform.localScale = new Vector3(2, gridChecker.transform.localScale.y, gridChecker.transform.localScale.z);
+    }
+    */
+
+    private void FindNextSpot()
+    {
+        float grid_x = 1;
+        float grid_y = 1;
+
+        float über_x = (transform.localPosition.x + 1000*grid_x) % grid_x;
+        float über_y = (transform.localPosition.y + 1000 * grid_y) % grid_y;
+
+        float snap_x = transform.position.x - über_x + 2 * grid_x;
+        float snap_y = transform.position.y - über_y + 2 * grid_y;
+
+        gridChecker.transform.position = new Vector3(
+            snap_x,
+            snap_y,
+            gridChecker.transform.position.z
+
+        );
+
+ 
+
+    }
+
+    private void Grid_Checker_Scale()
+    {
+        float rotation = gridChecker.transform.rotation.z * 180 / Mathf.PI;
+
+        Debug.Log("Scale: Rotation = " + rotation);
+        Debug.Log(Mathf.RoundToInt(rotation));
+        Debug.Log(Math.Abs(Mathf.RoundToInt(rotation)));
+
+        Vector3 scale_vector = new Vector3();
+        switch (Math.Abs(Mathf.RoundToInt(rotation)))
+        {
+            case 0:
+                Debug.Log("0");
+                scale_vector = new Vector3(2, 1, 1);
+                break;
+            case 41:
+                scale_vector = new Vector3(1, 2, 1);
+                Debug.Log("41");
+                break;
+            case 57:
+                scale_vector = new Vector3(2, 1, 1);
+                Debug.Log("57");
+                break;
+            case 270:
+                scale_vector = new Vector3(1, 2, 1);
+                Debug.Log("270");
+                break;
+        }
+        gridChecker.transform.localScale = scale_vector;
     }
 
 
