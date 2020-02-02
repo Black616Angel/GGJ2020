@@ -59,12 +59,9 @@ public class PickUp : MonoBehaviour
                     hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,1) * throwForce;
                     hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                     hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
-                    for (int i = 0; i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
+                    foreach (Collider2D coll in hit.collider.gameObject.GetComponentsInChildren<Collider2D>())
                     {
-                        foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
-                        {
-                            coll.enabled = true;
-                        }
+                        coll.enabled = true;
                     }
                     if (gridChecker)
                     {
@@ -121,12 +118,10 @@ public class PickUp : MonoBehaviour
                 hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                 hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
-                for (int i = 0; i < hit.collider.gameObject.transform.parent.transform.childCount; i++)
+                
+                foreach (Collider2D coll in hit.collider.gameObject.GetComponentsInChildren<Collider2D>())
                 {
-                    foreach (Collider2D coll in hit.collider.gameObject.transform.parent.transform.GetChild(i).GetComponents<Collider2D>())
-                    {
-                        coll.enabled = true;
-                    }
+                    coll.enabled = true;
                 }
                 hitObj.transform.position = gridChecker.transform.position;
 
