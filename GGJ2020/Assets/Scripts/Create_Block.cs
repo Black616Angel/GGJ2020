@@ -25,6 +25,7 @@ public class Create_Block : MonoBehaviour
         {
             int random = rnd.Next(0, prefabs_bloecke.Count);
             int drehung = rnd.Next(0, 4);
+            int plat = rnd.Next(0,2);
             GameObject o = Instantiate(prefabs_bloecke[random], parent);
 
             o.transform.position = new Vector3(-4.5f, 5f, 0);
@@ -37,21 +38,28 @@ public class Create_Block : MonoBehaviour
             {
                 o.transform.eulerAngles = new Vector3(o.transform.eulerAngles.x, o.transform.eulerAngles.x, transform.eulerAngles.z - 90);
             }
-            if (drehung == 1)
+            if (drehung == 2)
             {
                 o.transform.eulerAngles = new Vector3(o.transform.eulerAngles.x, o.transform.eulerAngles.x, transform.eulerAngles.z + 180);
             }
-            if (drehung == 1)
+            if (drehung == 3)
             {
                 o.transform.eulerAngles = new Vector3(o.transform.eulerAngles.x, o.transform.eulerAngles.x, transform.eulerAngles.z);
             }
 
-            GameObject k = Instantiate(prefab_plattform, o.transform);
+
+            if(plat == 0)
+            {
+                GameObject k = Instantiate(prefab_plattform, o.transform);
+                k.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), UnityEngine.Random.Range(-0.25f, 0.25f), k.transform.localPosition.z);
+            }
+
+            
 
             
 
 
-            k.transform.localPosition = new Vector3(UnityEngine.Random.Range(-0.25f,0.25f), UnityEngine.Random.Range(-0.25f, 0.25f), k.transform.localPosition.z);
+            
             
 
             created.Add(o);
