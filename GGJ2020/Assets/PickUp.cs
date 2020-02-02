@@ -59,7 +59,7 @@ public class PickUp : MonoBehaviour
                     hitObj.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,1) * throwForce;
                     hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                     hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
-                    foreach (Collider2D coll in hit.collider.gameObject.GetComponentsInChildren<Collider2D>())
+                    foreach (Collider2D coll in hitObj.GetComponentsInChildren<Collider2D>())
                     {
                         coll.enabled = true;
                     }
@@ -70,6 +70,8 @@ public class PickUp : MonoBehaviour
                         gridChecker = null;
                     }
                     hitObj = null;
+                    hitObj.tag = "Block";
+                    Debug.Log ("asd");
                 }
             }
         }
@@ -119,7 +121,7 @@ public class PickUp : MonoBehaviour
                 hitObj.GetComponent<Rigidbody2D>().gravityScale = 1;
                 hitObj.GetComponent<Rigidbody2D>().freezeRotation = false;
                 
-                foreach (Collider2D coll in hit.collider.gameObject.GetComponentsInChildren<Collider2D>())
+                foreach (Collider2D coll in hitObj.GetComponentsInChildren<Collider2D>())
                 {
                     coll.enabled = true;
                 }
@@ -132,7 +134,9 @@ public class PickUp : MonoBehaviour
                     //Destroy(gridChecker);
                 }
                 hitObj = null;
+                hitObj.tag = "Block";
             }
+            
         }
 
     }

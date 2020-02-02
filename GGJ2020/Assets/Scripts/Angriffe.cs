@@ -64,7 +64,7 @@ public class Angriffe : MonoBehaviour
 
     void Angriff_Typ2()
     {
-        if (Random.Range(0, 100) < 5f)
+        if (Random.Range(0, 100) < 50f)
         {
             if (GameObject.FindGameObjectsWithTag("Block").GetLength(0) > 0)
             {
