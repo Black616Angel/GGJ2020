@@ -266,14 +266,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music:
-
-    Punch Deck - Signal in the Noise
-
-    Punch Deck - Wandering
-    the Path
-
-'
+  m_Text: "Music:\n Signal in the Noise - (CC) by Punch Deck\nWandering the Path
+    - (CC) by Punch Deck\n"
 --- !u!222 &531686657
 CanvasRenderer:
   m_ObjectHideFlags: 0
